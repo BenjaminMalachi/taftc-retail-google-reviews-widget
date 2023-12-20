@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #fff; /* or any color you prefer */
+}
+
+.main-container {
+    max-width: 1280px;
+    margin: 20px auto; /* Center the container */
+    width: 100%;
+}
+
+#overall-rating-container {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    /* Add more styling as needed */
+}
+
+.overall-rating-stars {
+    font-size: 1.2em;
+    /* Additional styling for stars */
+}
+
+.total-ratings {
+    font-size: 1em;
+    margin-top: 10px;
+    /* Additional styling for total ratings text */
+}
+
+#reviews-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#reviews-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Creates a responsive grid */
+    grid-gap: 20px; /* Adjust as needed for spacing */
+    justify-content: center; /* Center the review items */
+}
+
+.review-items {
+    background-color: #f2f2f2;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: 10px; /* Space around items */
+    width: 100%; /* Each item will fill the column width */
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+.reviews-title {
+    text-align: center;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    width: 100%;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.review p {
+    text-align: left;
+}
+
+.reviewer-profile {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.reviewer-profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.review-content {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+}
+
+.review-rating .fas, .review-rating .far {
+    color: #FFD700 !important;
+    margin-right: 2px;
+}
+
+.partial-star {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.partial-star::before {
+    content: "\f005"; /* Unicode for solid star */
+    font-family: "Font Awesome 5 Free"; /* Ensure this matches the Font Awesome version you're using */
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #FFD700; /* Gold color for stars */
+}
+
+
+@media (max-width: 768px) {
+    .review-items {
+        width: 100%; /* Full width for small screens */
+    }
+}
