@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchGoogleReviews();
 });
 
+reviewDiv.querySelector('.read-more').addEventListener('click', function() {
+    expandReviewText(this);
+});
+
 function fetchGoogleReviews() {
     const apiURL = '/fetch-google-reviews?placeid=ChIJz4vLjywa2jER1k-mX55g_mk';
 
@@ -42,8 +46,8 @@ function displayReviews(reviewsData) {
             <div class="review-content">
                 <div class="reviewer-name"><b>${review.author_name}</b></div>
                 <div class="review-rating">${generateStars(review.rating)}</div>
-                <p>${truncateReviewText(review.text, 80)}</p>
-                <button class="read-more">Read more</button>
+                <p class="review-text" data-fulltext="${review.text}">${truncateReviewText(review.text, 80)}</p>
+                <p class="read-more" onclick="expandReviewText(this)">...read more</p>
             </div>
         `;
         reviewsContainer.appendChild(reviewDiv);
@@ -82,6 +86,24 @@ function truncateReviewText(text, maxLength) {
     if (text.length <= maxLength) return text;
     return text.substr(0, text.lastIndexOf(' ', maxLength)) + '...';
 }
+
+function expandReviewText(element) {
+    const reviewTextP = element.previousElementSibling; // This assumes the full review text is right before the "read more" p element.
+    
+    // Check if the full text is currently displayed.
+    if (element.getAttribute('data-expanded') === 'true') {
+        // If it is, switch back to the truncated text.
+        reviewTextP.textContent = truncateReviewText(reviewTextP.getAttribute('data-fulltext'), 80);
+        element.textContent = '...read more';
+        element.setAttribute('data-expanded', 'false');
+    } else {
+        // If not, expand to show the full text.
+        reviewTextP.textContent = reviewTextP.getAttribute('data-fulltext');
+        element.textContent = 'hide';
+        element.setAttribute('data-expanded', 'true');
+    }
+}
+
 
 $('.reviews-container').slick({
     dots: true,

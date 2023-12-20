@@ -103,6 +103,17 @@ body {
     color: #FFD700; /* Gold color for stars */
 }
 
+.read-more {
+    cursor: pointer; /* Changes the cursor to indicate it's clickable */
+    color: #0000EE; /* Standard link color, adjust as needed */
+    text-decoration: none; /* Removes underline by default */
+    transition: font-weight 0.2s ease, text-decoration 0.2s ease; /* Smooth transition for the hover effect */
+}
+
+.read-more:hover {
+    font-weight: bold; /* Makes text bold when hovered */
+    text-decoration: underline; /* Adds underline on hover */
+}
 
 @media (max-width: 768px) {
     .review-items {
