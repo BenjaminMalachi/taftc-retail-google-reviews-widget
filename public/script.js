@@ -40,7 +40,7 @@ function displayReviews(reviewsData) {
                 <img src="${review.profile_photo_url}" alt="${review.author_name} profile picture">
             </div>
             <div class="review-content">
-                <div class="reviewer-name">${review.author_name}</div>
+                <div class="reviewer-name"><b>${review.author_name}</b></div>
                 <div class="review-rating">${generateStars(review.rating)}</div>
                 <p>${truncateReviewText(review.text, 80)}</p>
                 <button class="read-more">Read more</button>
